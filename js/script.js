@@ -31,31 +31,37 @@ const refreshBtn = document.getElementById("refresh");
 
 
 genBtn.addEventListener("click",
-    function () {
+    function () 
+    {
 
         let diffSelect = document.getElementById("dif").value;
 
         if (diffSelect == 1) {
-            for (let i = 1; i <= 100; i++) {
+            for (let i = 1; i <= 100; i++) 
+            {
                 document.getElementById("wrapper").innerHTML += `<div class="square">${i}</div>`;
             }
 
             document.getElementById("wrapper").addEventListener("click", quadrati);
         
-        } else if (diffSelect == 2) {
+        } else if (diffSelect == 2) 
+        {
 
             document.getElementById("wrapper").classList.add("dif-field");
 
-            for (let i = 1; i <= 81; i++) {
+            for (let i = 1; i <= 81; i++) 
+            {
                 document.getElementById("wrapper").innerHTML += `<div class="square">${i}</div>`;
             }
 
             document.getElementById("wrapper").addEventListener("click", quadrati);
-        } else {
+        } else 
+        {
 
             document.getElementById("wrapper").classList.add("imp-field");
 
-            for (let i = 1; i <= 49; i++) {
+            for (let i = 1; i <= 49; i++) 
+            {
                 document.getElementById("wrapper").innerHTML += `<div class="square">${i}</div>`;
             }
 
@@ -65,13 +71,17 @@ genBtn.addEventListener("click",
     }
 );
 
-function quadrati(event){
+function quadrati(event)
+{
     // console.log(event);
     let selectNum = event.target.innerHTML;
     
-    if (clicked.includes(selectNum)) {
+    if (clicked.includes(selectNum)) 
+    {
         alert("Hai già selezionato questa casella");
-    } else {
+    }
+    else 
+    {
         event.target.classList.add("clicked");
         clicked.push(selectNum);
         if (clicked.length == 84) {
@@ -79,8 +89,10 @@ function quadrati(event){
         }
     }
 
-    for (let i = 0; i < bombs.length; i++) {
-        if (bombs[i] == selectNum) {
+    for (let i = 0; i < bombs.length; i++) 
+    {
+        if (bombs[i] == selectNum) 
+        {
             event.target.classList.add("bomb");
             document.getElementById("alert").innerHTML += "IL TUO PUNTEGGIO É: " + parseInt(clicked.length - 1);
             alert("LA TUA PARTITA É TERMINATA")
