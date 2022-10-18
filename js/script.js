@@ -8,13 +8,18 @@
 
 // 1.
 // (funzione utilizzata per generare le 16 bombe)
-function bombGenerator(arr) {
-    for (let i = 1; i <= 16; i++) {
+function bombGenerator(arr) 
+{
+    for (let i = 1; i <= 16; i++) 
+    {
         let randomNum = Math.round(Math.random() * 100);
 
-        if (arr.includes(randomNum)) {
+        if (arr.includes(randomNum)) 
+        {
             i += -1;
-        } else {
+        } 
+        else 
+        {
             arr.push(randomNum);
         }
     }   
@@ -44,7 +49,8 @@ genBtn.addEventListener("click",
 
             document.getElementById("wrapper").addEventListener("click", quadrati);
         
-        } else if (diffSelect == 2) 
+        } 
+        else if (diffSelect == 2) 
         {
 
             document.getElementById("wrapper").classList.add("dif-field");
@@ -55,7 +61,8 @@ genBtn.addEventListener("click",
             }
 
             document.getElementById("wrapper").addEventListener("click", quadrati);
-        } else 
+        } 
+        else 
         {
 
             document.getElementById("wrapper").classList.add("imp-field");
@@ -88,7 +95,7 @@ function quadrati(event)
             document.getElementById("alert").innerHTML += "HAI VINTO!";
         }
     }
-
+    
     for (let i = 0; i < bombs.length; i++) 
     {
         if (bombs[i] == selectNum) 
