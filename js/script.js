@@ -40,97 +40,61 @@ genBtn.addEventListener("click",
                 document.getElementById("wrapper").innerHTML += `<div class="square">${i}</div>`;
             }
 
-            document.getElementById("wrapper").addEventListener("click",
-                function(event) {
-                    let selectNum = event.target.innerHTML;
-                    
-                    if (clicked.includes(selectNum)) {
-                        alert("Hai già selezionato questa casella");
-                    } else {
-                        event.target.classList.add("clicked");
-                        clicked.push(selectNum);
-                        if (clicked.length == 84) {
-                            document.getElementById("alert").innerHTML += "HAI VINTO!";
-                        }
-                    }
-
-                    for (let i = 0; i < bombs.length; i++) {
-                        if (bombs[i] == selectNum) {
-                            event.target.classList.add("bomb");
-                            document.getElementById("alert").innerHTML += "IL TUO PUNTEGGIO E': " + (clicked.length);
-                            if (clicked.includes(selectNum)) {
-                                clicked.pop();
-                            }
-                        }
-                    }
-
-                }
-            );
+            document.getElementById("wrapper").addEventListener("click", quadrati);
+        
         } else if (diffSelect == 2) {
 
             document.getElementById("wrapper").classList.add("dif-field");
 
             for (let i = 1; i <= 81; i++) {
-                document.getElementById("wrapper").innerHTML += `<div class="square water">${i}</div>`;
+                document.getElementById("wrapper").innerHTML += `<div class="square">${i}</div>`;
             }
 
-            document.getElementById("wrapper").addEventListener("click",
-                function (event) {
-                    var selectNum = event.target.innerHTML;
-
-                    event.target.classList.add("clicked");
-                    if (clicked.includes(selectNum)) {
-                        alert("Hai già selezionato questa casella");
-                    } else {
-                        clicked.push(selectNum);
-                    }
-
-                    for (let i = 0; i < bombs.length; i++) {
-                        if (bombs[i] == selectNum) {
-                            event.target.classList.add("bomb");
-                            document.getElementById("alert").innerHTML += "IL TUO PUNTEGGIO E': " + (clicked.length);
-                            if (clicked.includes(selectNum)) {
-                                clicked.pop();
-                            }
-                        }
-                    }
-
-                }
-            );
+            document.getElementById("wrapper").addEventListener("click", quadrati);
         } else {
 
             document.getElementById("wrapper").classList.add("imp-field");
 
             for (let i = 1; i <= 49; i++) {
-                document.getElementById("wrapper").innerHTML += `<div class="square cave">${i}</div>`;
+                document.getElementById("wrapper").innerHTML += `<div class="square">${i}</div>`;
             }
 
-            document.getElementById("wrapper").addEventListener("click",
-                function (event) {
-                    let selectNum = event.target.innerHTML;
-
-                    event.target.classList.add("clicked");
-                    if (clicked.includes(selectNum)) {
-                        alert("Hai già selezionato questa casella");
-                    } else {
-                        clicked.push(selectNum);
-                    }
-
-                    for (let i = 0; i < bombs.length; i++) {
-                        if (bombs[i] == selectNum) {
-                            event.target.classList.add("bomb");
-                            document.getElementById("alert").innerHTML += "IL TUO PUNTEGGIO E': " + parseInt(clicked.length - 1);
-                            if (clicked.includes(selectNum)) {
-                                clicked.pop();
-                            }
-                        }
-                    }
-                }
-            );
+            document.getElementById("wrapper").addEventListener("click", quadrati);
         }
     
     }
 );
+
+function quadrati(event){
+    // console.log(event);
+    let selectNum = event.target.innerHTML;
+    
+    if (clicked.includes(selectNum)) {
+        alert("Hai già selezionato questa casella");
+    } else {
+        event.target.classList.add("clicked");
+        clicked.push(selectNum);
+        if (clicked.length == 84) {
+            document.getElementById("alert").innerHTML += "HAI VINTO!";
+        }
+    }
+
+    for (let i = 0; i < bombs.length; i++) {
+        if (bombs[i] == selectNum) {
+            event.target.classList.add("bomb");
+            document.getElementById("alert").innerHTML += "IL TUO PUNTEGGIO É: " + parseInt(clicked.length - 1);
+            alert("LA TUA PARTITA É TERMINATA")
+            document.getElementById("wrapper").removeEventListener("click", quadrati)
+            if (clicked.includes(selectNum)) {
+                clicked.pop();
+            }
+        }
+    }
+
+}
+
+
+
 
 refreshBtn.addEventListener("click" ,
     function() {
